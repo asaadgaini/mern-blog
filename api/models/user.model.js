@@ -15,7 +15,12 @@ const userSchema = new mongoose.Schema({
     password : {
         type : String,
         require:true,
+    },
+    avatar :{
+        type: String,
+        default : "https://icons.veryicon.com/png/o/miscellaneous/standard/avatar-15.png"
     }
+
 
 
 }, {timestamps:true})
