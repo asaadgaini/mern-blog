@@ -18,7 +18,7 @@ const userSchema = new mongoose.Schema({
     },
     avatar :{
         type: String,
-        default : "https://icons.veryicon.com/png/o/miscellaneous/standard/avatar-15.png"
+       
     }
 
 
