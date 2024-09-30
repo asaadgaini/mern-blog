@@ -40,7 +40,7 @@ function SignUp() {
     dispatch(signInFailure(error.message))
   }}
   return (
-    <div className="p-3 mx-auto max-w-lg">
+    <div className="p-3 mx-auto h-screen max-w-lg">
       <h1 className="text-3xl font-semibold text-center my-7 ">Sign In</h1>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4 ">
         
