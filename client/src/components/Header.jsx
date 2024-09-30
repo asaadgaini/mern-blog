@@ -1,4 +1,4 @@
-import { Button, Navbar, NavbarBrand, TextInput } from "flowbite-react";
+import { Button, Navbar, NavbarBrand ,Dropdown, TextInput, Avatar, DropdownHeader, DropdownDivider } from "flowbite-react";
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { AiFillMoon, AiOutlineSearch } from "react-icons/ai";
@@ -33,13 +33,38 @@ function Header() {
         <Button color={"gray"} className="h-10 w-12 hidden sm:inline">
           <AiFillMoon />
         </Button>
-        <Link to={"/sign-in"}>
+        
           {currentUser ? (
-            <img className=" rounded-full h-7 w-7 bg-cover" src={currentUser.avatar} alt="profile" />
+            <Dropdown 
+              arrowIcon={false}
+              inline
+              label = {
+              <Avatar 
+                alt="user"
+                img={currentUser.avatar}
+                rounded
+              />
+          
+              }
+              >
+                <DropdownHeader>
+                  <span className="block text-sm ">@{currentUser.username}</span>
+                  <span className="block text-sm truncate font-medium">{currentUser.email}</span>
+                </DropdownHeader>
+                <Link to={"/dashboard?tab=profile"}>
+                  <Dropdown.Item>Profile</Dropdown.Item>
+                </Link>
+                <DropdownDivider/>
+                <Dropdown.Item>Sign Out</Dropdown.Item>
+
+
+            </Dropdown>
           ) : (
+          <Link to={"/sign-in"}>
             <Button color={"purple"}>Sign In</Button>
+            </Link>
           )}
-        </Link>
+        
         <Navbar.Toggle />
       </div>
       <Navbar.Collapse>
@@ -49,8 +74,8 @@ function Header() {
         <Navbar.Link active={path === "/about"} as={"div"}>
           <Link to={"/about"}>About</Link>
         </Navbar.Link>
-        <Navbar.Link active={path === "/projects"} as={"div"}>
-          <Link to={"/projects"}>Projects</Link>
+        <Navbar.Link active={path === "/profile"} as={"div"}>
+          <Link to={"/profile"}>Profile</Link>
         </Navbar.Link>
       </Navbar.Collapse>
     </Navbar>
