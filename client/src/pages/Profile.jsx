@@ -4,7 +4,7 @@ import { useRef } from 'react'
 import {getDownloadURL, getStorage,ref, uploadBytesResumable} from 'firebase/storage'
 import { app } from '../firebase'
 
-function Projects() {
+function Profile() {
   const {currentUser} = useSelector((state)=>state.user)
   const fileRef= useRef(null)
   const [file , setFile] = useState(undefined)
@@ -83,4 +83,4 @@ uploadTask.on("state_changed" ,
   )
 }
 
-export default Projects
+export default Profile
